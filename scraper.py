@@ -6,10 +6,10 @@ URL = "https://pokemondb.net/pokedex/national"
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
-
 # print(soup)
-print(type(soup))
 
-pokemon_links = re.findall("href=\"\/pokedex\/[^\"]*\"", str(soup))
-pokemon_links = list(map(lambda href_link : "pokemondb.net"+href_link[6:-1], pokemon_links))
-print(pokemon_links)
+pokemon_links = re.findall("<a class=\"ent-name\" href=\"\/pokedex\/[^\"]*\"", str(soup))
+pokemon_links = list(map(lambda href_link : "https://pokemondb.net"+href_link[26:-1], pokemon_links))
+# print(pokemon_links)
+
+pokemon_links = list(set(pokemon_links))
