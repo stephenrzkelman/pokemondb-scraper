@@ -19,8 +19,10 @@ def get_pokemon_info(pokemon_links):
     for URL in pokemon_links:
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
+        # Get Name
         name = soup.find_all("h1")[0].text
         print(name)
+        # Get Types
         dex_data = soup.find_all(
             "h2", 
             # class_="grid-col span-md-6 span-lg-4",
@@ -32,7 +34,24 @@ def get_pokemon_info(pokemon_links):
         )
         types = [type_tag.text for type_tag in type_tags]
         print(types)
+        # Get Base Stats
+        dex_stats = soup.find(
+            "h2",
+            string="Base stats"
+        ).parent
+        stat_names = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed']
+        stats = {}
+        for stat_name in stat_names:
+            stat_section = dex_stats.find("th", string=stat_name).parent
+            stat_value = stat_section.find("td", class_="cell-num").text
+            stats[stat_name] = stat_value
+        print(stats)
         return
+        # stats = {}
+        # for stat
+        # print(stats)
+
+        # return
 
 pokemon_links = get_pokemon_links()
 get_pokemon_info(pokemon_links)
