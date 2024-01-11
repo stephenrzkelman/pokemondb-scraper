@@ -18,10 +18,7 @@ def get_pokemon_links():
 
 def get_pokemon_info(pokemon_links):
     pokemon_data = {}
-    limit = 5
-    counter = 0
     for URL in pokemon_links:
-        counter += 1
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
         # Get Name
@@ -55,8 +52,6 @@ def get_pokemon_info(pokemon_links):
             "Base Stats": stats,
             "Type": types
         }
-        if counter >= limit:
-            break
     return pokemon_data
 
 def output_to_file(pokemon_data, filename):
