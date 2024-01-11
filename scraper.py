@@ -1,6 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+import json
 
 def get_pokemon_links():
     URL = "https://pokemondb.net/pokedex/national"
@@ -16,7 +17,11 @@ def get_pokemon_links():
     return list(set(pokemon_links))
 
 def get_pokemon_info(pokemon_links):
+    pokemon_data = {}
+    limit = 5
+    counter = 0
     for URL in pokemon_links:
+        counter += 1
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
         # Get Name
@@ -46,12 +51,19 @@ def get_pokemon_info(pokemon_links):
             stat_value = stat_section.find("td", class_="cell-num").text
             stats[stat_name] = stat_value
         print(stats)
-        return
-        # stats = {}
-        # for stat
-        # print(stats)
+        pokemon_data[name] = {
+            "Base Stats": stats,
+            "Type": types
+        }
+        if counter >= limit:
+            break
+    return pokemon_data
 
-        # return
+def output_to_file(pokemon_data, filename):
+    with open(filename, "w") as outfile:
+        json.dump(pokemon_data, outfile)
 
 pokemon_links = get_pokemon_links()
-get_pokemon_info(pokemon_links)
+pokemon_data = get_pokemon_info(pokemon_links)
+output_to_file(pokemon_data, "pokemon.json")
+
