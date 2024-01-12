@@ -25,6 +25,8 @@ def get_variant_name(pokemon_name, variant_name):
 def get_pokemon_info(pokemon_links):
     pokemon_data = {}
     for URL in pokemon_links:
+        # save index name for other web scraping
+        pokemondb_name = URL.split("/")[-1]
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
         # Get Name
@@ -81,6 +83,7 @@ def get_pokemon_info(pokemon_links):
                 stats[variant][stat_name] = stat_value
             # print(stats)
             pokemon_data[get_variant_name(name,variant)] = {
+                "ID": pokemondb_name,
                 "Base Stats": stats[variant],
                 "Type": variant_types[variant]
             }
