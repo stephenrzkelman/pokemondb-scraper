@@ -21,6 +21,74 @@ def get_variant_name(pokemon_name, variant_name):
         return pokemon_name
     else:
         return pokemon_name + "-" + variant_name.split(" ")[0]
+    
+
+def get_pokemon_variants(pokemon_webpage):
+    # get section with variants
+    variant_section = pokemon_webpage.find(
+        "div",
+        class_="sv-tabs-tab-list"
+    )
+    # get actual names of variants
+    variants = list(map(
+        lambda variant_header: variant_header.text,
+        variant_section.find_all(
+            "a",
+            class_="sv-tabs-tab"
+        )
+    ))
+    # return list of variant names
+    return variants
+
+
+def get_pokemon_types(pokemon_webpage):
+    # get all variant dex data sections
+    dex_data = list(map(
+        lambda dex_data_header: dex_data_header.parent,
+        pokemon_webpage.find_all(
+            "h2",
+            string="Pokédex data"
+        )
+    ))
+    # for each dex data section, extract the type headers
+    type_tags = list(map(
+        lambda dex_datum: dex_datum.find_all("a", class_="type-icon"),
+        dex_data
+    ))
+    # extract the actual types
+    types = [
+        [tag.text for tag in tags] for tags in type_tags
+    ]
+    # return 2d list of type for each variant
+    return types
+
+
+def extract_stats(stat_data):
+    stat_names = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed']
+    stats = {}
+    for stat_name in stat_names:
+        stat_bar = stat_data.find("th", string=stat_name).parent
+        stat_value = stat_bar.find("td", class_="cell-num").text
+        stats[stat_name]= stat_value
+    return stats
+
+
+def get_pokemon_base_stats(pokemon_webpage):
+    # get base stat section
+    dex_stats = list(map(
+        lambda dex_stat_header: dex_stat_header.parent,
+        pokemon_webpage.find_all(
+            "h2",
+            string="Base stats"
+        )
+    ))
+    # extract actual stats
+    stats = list(map(
+        lambda stat_data: extract_stats(stat_data),
+        dex_stats
+    ))
+    return stats
+
 
 def get_pokemon_info(pokemon_links):
     pokemon_data = {}
@@ -31,61 +99,18 @@ def get_pokemon_info(pokemon_links):
         soup = BeautifulSoup(page.content, "html.parser")
         # Get Name
         name = soup.find_all("h1")[0].text
-        print(name)
         # Get Variants
-        variant_section = soup.find(
-            "div",
-            class_="sv-tabs-tab-list"
-        )
-        variants = list(map(
-            lambda variant_header: variant_header.text,
-            variant_section.find_all(
-                "a",
-                class_="sv-tabs-tab"
-            )
-        ))
-        # print(variants)
+        variants = get_pokemon_variants(soup)
         # Get Types
-        dex_data = list(map(
-            lambda dex_data_header: dex_data_header.parent,
-            soup.find_all(
-                "h2", 
-                # class_="grid-col span-md-6 span-lg-4",
-                string="Pokédex data"
-            )
-        ))
-        type_tags = list(map(
-            lambda dex_datum: dex_datum.find_all("a", class_="type-icon"),
-            dex_data
-        ))
-        types = [
-            [tag.text for tag in tags] for tags in type_tags
-        ]
-        variant_types = {variants[i]:types[i] for i in range(len(variants))}
-        # print(types)
+        types = get_pokemon_types(soup)
         # Get Base Stats
-        dex_stats = list(map(
-            lambda dex_stat_header: dex_stat_header.parent,
-            soup.find_all(
-                "h2",
-                string="Base stats"
-            )
-        ))
-        variant_dex_stats = {
-            variants[i]:dex_stats[i] for i in range(len(variants))
-        }
-        stat_names = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed']
-        stats = {variant: {} for variant in variants}
-        for variant in variants:
-            for stat_name in stat_names:
-                stat_section = variant_dex_stats[variant].find("th", string=stat_name).parent
-                stat_value = stat_section.find("td", class_="cell-num").text
-                stats[variant][stat_name] = stat_value
-            # print(stats)
-            pokemon_data[get_variant_name(name,variant)] = {
+        stats = get_pokemon_base_stats(soup)
+        # Combine Info
+        for i in range(len(variants)):
+            pokemon_data[get_variant_name(name, variants[i])] = {
                 "ID": pokemondb_name,
-                "Base Stats": stats[variant],
-                "Type": variant_types[variant]
+                "type": types[i],
+                "stats": stats[i],
             }
     return pokemon_data
 
