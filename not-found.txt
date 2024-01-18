@@ -1,79 +1,71 @@
-Raging Bolt
-Nidoran♀ (female)-Nidoran♀
-Morpeko-Full
-Necrozma-Dusk
-Necrozma-Dawn
-Necrozma-Ultra
-Calyrex-Ice
-Calyrex-Shadow
-Swampert-Mega
-Iron Crown
-Greninja-Ash-Greninja
-Iron Valiant
-Gallade-Mega
-Iron Leaves
-Tapu Bulu
-Iron Treads
-Maushold-Family
-Urshifu-Single
-Urshifu-Rapid
-Rockruff-Own
-Steelix-Mega
-Mr. Mime
-Mr. Mime-Galarian
-Mr. Rime
-Salamence-Mega
-Type: Null
-Kyogre-Primal
-Slowbro-Mega
-Slither Wing
-Iron Bundle
-Walking Wake
-Sirfetch'd
-Audino-Mega
-Zygarde-50%
-Zygarde-10%
-Zygarde-Complete
-Eevee-Partner
-Sandy Shocks
-Scream Tail
-Mime Jr.
-Tapu Koko
-Groudon-Primal
-Pikachu-Partner
-Iron Moth
-Iron Thorns
-Beedrill-Mega
-Rayquaza-Mega
-Gouging Fire
-Toxtricity-Low
-Darmanitan-Galarian
-Roaring Moon
-Brute Bonnet
-Camerupt-Mega
-Metagross-Mega
-Mewtwo-Mega
-Hoopa-Hoopa
-Nidoran♂ (male)-Nidoran♂
-Sceptile-Mega
-Sharpedo-Mega
-Altaria-Mega
-Sableye-Mega
-Glalie-Mega
-Farfetch'd
-Farfetch'd-Galarian
-Iron Hands
-Lopunny-Mega
-Great Tusk
-Pidgeot-Mega
-Rattata-Alolan
-Tapu Lele
-Tapu Fini
-Iron Boulder
-Flutter Mane
-Flabébé
-Raticate-Alolan
-Iron Jugulis
-Charizard-Mega
-Oricorio-Pa'u
-Diancie-Mega
+Altaria-Mega (altaria-mega)
+Pecharunt (pecharunt)
+Steelix-Mega (steelix-mega)
+Sandy Shocks (sandy-shocks-sandy)
+Iron Hands (iron-hands-iron)
+Audino-Mega (audino-mega)
+Iron Crown (iron-crown-iron)
+Hoopa-Hoopa (hoopa-hoopa)
+Swampert-Mega (swampert-mega)
+Walking Wake (walking-wake-walking)
+Camerupt-Mega (camerupt-mega)
+Flabébé (flabebe-flabébé)
+Darmanitan-Galarian (darmanitan-galarian)
+Greninja-Ash-Greninja (greninja-ash-greninja)
+Tapu Koko (tapu-koko-tapu)
+Roaring Moon (roaring-moon-roaring)
+Iron Jugulis (iron-jugulis-iron)
+Iron Bundle (iron-bundle-iron)
+Tapu Lele (tapu-lele-tapu)
+Beedrill-Mega (beedrill-mega)
+Iron Boulder (iron-boulder-iron)
+Gallade-Mega (gallade-mega)
+Urshifu-Single (urshifu-single)
+Urshifu-Rapid (urshifu-rapid)
+Iron Leaves (iron-leaves-iron)
+Mime Jr. (mime-jr-mime)
+Farfetch'd (farfetchd-farfetch'd)
+Farfetch'd-Galarian (farfetchd-galarian)
+Brute Bonnet (brute-bonnet-brute)
+Calyrex-Ice (calyrex-ice)
+Calyrex-Shadow (calyrex-shadow)
+Nidoran♀ (female)-Nidoran♀ (nidoran-f-nidoran♀)
+Lopunny-Mega (lopunny-mega)
+Sirfetch'd (sirfetchd-sirfetch'd)
+Pikachu-Partner (pikachu-partner)
+Groudon-Primal (groudon-primal)
+Flutter Mane (flutter-mane-flutter)
+Mr. Mime (mr-mime-mr.)
+Mr. Mime-Galarian (mr-mime-galarian)
+Necrozma-Dusk (necrozma-dusk)
+Necrozma-Dawn (necrozma-dawn)
+Necrozma-Ultra (necrozma-ultra)
+Mewtwo-Mega (mewtwo-mega)
+Mr. Rime (mr-rime-mr.)
+Diancie-Mega (diancie-mega)
+Rayquaza-Mega (rayquaza-mega)
+Slither Wing (slither-wing-slither)
+Rockruff-Own (rockruff-own)
+Toxtricity-Low (toxtricity-low)
+Iron Thorns (iron-thorns-iron)
+Zygarde-50% (zygarde-50%)
+Zygarde-10% (zygarde-10%)
+Eevee-Partner (eevee-partner)
+Morpeko-Full (morpeko-full)
+Type: Null (type-null-type:)
+Charizard-Mega (charizard-mega)
+Nidoran♂ (male)-Nidoran♂ (nidoran-m-nidoran♂)
+Scream Tail (scream-tail-scream)
+Iron Valiant (iron-valiant-iron)
+Maushold-Family (maushold-family)
+Great Tusk (great-tusk-great)
+Iron Treads (iron-treads-iron)
+Tapu Bulu (tapu-bulu-tapu)
+Tapu Fini (tapu-fini-tapu)
+Sceptile-Mega (sceptile-mega)
+Gouging Fire (gouging-fire-gouging)
+Kyogre-Primal (kyogre-primal)
+Iron Moth (iron-moth-iron)
+Raging Bolt (raging-bolt-raging)
+Oricorio-Pa'u (oricorio-pa'u)
+Pidgeot-Mega (pidgeot-mega)

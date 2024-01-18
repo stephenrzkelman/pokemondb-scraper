@@ -8,29 +8,25 @@ def scrape_images():
     pokemon = json.load(pokemon_file)
     for mon in pokemon.keys():
         print(mon)
-        id = mon.lower()
+        id = pokemon[mon]["ID"]
         mon_image_file = f"images/{id}.png"
         if os.path.exists(mon_image_file):
             # skip if we already have the image
             continue
-        gen8_url = f"https://img.pokemondb.net/sprites/sword-shield/normal/{id}.png"
-        gen9_url = f"https://img.pokemondb.net/sprites/scarlet-violet/normal/{id}.png"
-        gen6_url = f"https://img.pokemondb.net/sprites/x-y/normal/{id}.png"
-        gen8_response = requests.get(gen8_url)        
-        gen9_response = requests.get(gen9_url)
-        gen6_response = requests.get(gen6_url)
-        if gen8_response.status_code == 200:
-            with open(mon_image_file, "wb+") as image_file:
-                image_file.write(gen8_response.content)
-        elif gen9_response.status_code == 200:
-            with open(mon_image_file, "wb+") as image_file:
-                image_file.write(gen9_response.content)
-        elif gen6_response.status_code == 200:
-            with open(mon_image_file, "wb+") as image_file:
-                image_file.write(gen6_response.content)
-        else:
-            print(f"{mon} not available in gen 8 or gen 9")
-            record_file.write(f"{mon}\n")
+        generation_names = ["black-white", "x-y", "sun-moon", "sword-shield", "scarlet-violet"]
+        def generation_url(generation_name):
+            return f"https://img.pokemondb.net/sprites/{generation_name}/normal/{id}.png"
+        generation_responses = list(map(
+            lambda gen: requests.get(generation_url(gen)),
+            generation_names
+        ))
+        for response in generation_responses:
+            if response.status_code == 200:
+                with open(mon_image_file, "wb+") as image_file:
+                    image_file.write(response.content)
+                continue
+        # print(f"{mon} ({id}) sprite not found in gen 5-9 main games")
+        record_file.write(f"{mon} ({id})\n")
 
 
 scrape_images()
