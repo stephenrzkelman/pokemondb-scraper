@@ -3,6 +3,7 @@ import requests
 import os
 
 def scrape_images():
+    record_file = open('not-found.txt', 'w', encoding="utf-8")
     pokemon_file = open('pokemon.json')
     pokemon = json.load(pokemon_file)
     for mon in pokemon.keys():
@@ -29,6 +30,7 @@ def scrape_images():
                 image_file.write(gen6_response.content)
         else:
             print(f"{mon} not available in gen 8 or gen 9")
+            record_file.write(f"{mon}\n")
 
 
 scrape_images()
