@@ -16,13 +16,14 @@ def get_pokemon_links():
 
     return list(set(pokemon_links))
 
+
 def get_variant_name_id(pokemon_name, variant_name, pokemon_id):
     if(variant_name == pokemon_name):
         return pokemon_name, pokemon_id
     else:
         variant_suffix = variant_name.split(" ")[0]
         pokemon_variant_name = pokemon_name + "-" + variant_suffix
-        pokemon_variant_id = pokemon_id + "-" + variant_suffix
+        pokemon_variant_id = pokemon_id + "-" + variant_suffix.lower()
         return pokemon_variant_name, pokemon_variant_id
 
 
