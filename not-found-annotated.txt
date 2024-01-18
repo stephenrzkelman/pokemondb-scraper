@@ -1,0 +1,77 @@
+Rayquaza-Mega (rayquaza-mega)
+    does not exist in gen 5-9 core games
+Audino-Mega (audino-mega)
+    does not exist in gen 5-9 core games
+Necrozma-Dusk (necrozma-dusk)
+    incorrect id: should be `necrozma-dusk-mane`
+Necrozma-Dawn (necrozma-dawn)
+    incorrect id: should be `necrozma-dawn-wings`
+Necrozma-Ultra (necrozma-ultra)
+    does not exist in gen 5-9 core games
+Camerupt-Mega (camerupt-mega)
+    does not exist in gen 5-9 core games
+Pikachu-Partner (pikachu-partner)
+    edge case, no good specific matching ID (pikachu-lets-go)
+Steelix-Mega (steelix-mega)
+    does not exist in gen 5-9 core games
+Eevee-Partner (eevee-partner)
+    does not exist in gen 5-9 core games
+    edge case, no good specific matching ID (eevee-lets-go)
+Oricorio-Pa'u (oricorio-pa'u)
+    id needs to remove apostrophe (oricorio-pau)
+Nidoran♀ (female)-Nidoran♀ (nidoran-f-nidoran♀)
+    id should just be (nidoran-f)
+Pidgeot-Mega (pidgeot-mega)
+    does not exist in gen 5-9 core games
+Beedrill-Mega (beedrill-mega)
+    does not exist in gen 5-9 core games
+Groudon-Primal (groudon-primal)
+    does not exist in gen 5-9 core games
+Toxtricity-Low (toxtricity-low)
+    id should be toxtricity-low-key
+Calyrex-Ice (calyrex-ice)
+    id should be calyrex-ice-rider
+Calyrex-Shadow (calyrex-shadow)
+    id should be calyrex-shadow-rider
+Greninja-Ash-Greninja (greninja-ash-greninja)
+    does not exist in gen 5-9 core games
+Lopunny-Mega (lopunny-mega)
+    does not exist in gen 5-9 core games
+Gallade-Mega (gallade-mega)
+    does not exist in gen 5-9 core games
+Darmanitan-Galarian (darmanitan-galarian)
+    id's should be darmanitan-galarian-standard and darmanitan-galarian-zen
+Hoopa-Hoopa (hoopa-hoopa)
+    id's should be hoopa-confined and hoopa-unbound
+Charizard-Mega (charizard-mega)
+    id's should be charizard-mega-x and charizard-mega-y
+Morpeko-Full (morpeko-full)
+    id should be morpeko-full-belly
+Kyogre-Primal (kyogre-primal)
+    does not exist in gen 5-9 core games
+Rockruff-Own (rockruff-own)
+    should just use same sprite as rockruff
+Mewtwo-Mega (mewtwo-mega)
+    id's should be mewtwo-mega-x and mewtwo-mega-y
+Maushold-Family (maushold-family)
+    id's should be maushold-family3 and maushold-family4
+Diancie-Mega (diancie-mega)
+    does not exist in gen 5-9 core games
+Zygarde-50% (zygarde-50%)
+    does not exist in gen 5-9 core games
+    id should be zygarde-50
+Zygarde-10% (zygarde-10%)
+    does not exist in gen 5-9 core games
+    id should be zygarde-10
+Altaria-Mega (altaria-mega)
+    does not exist in gen 5-9 core games
+Nidoran♂ (male)-Nidoran♂ (nidoran-m-nidoran♂)
+    id should just be nidoran-m
+Swampert-Mega (swampert-mega)
+    does not exist in gen 5-9 core games
+Sceptile-Mega (sceptile-mega)
+    does not exist in gen 5-9 core games
+Urshifu-Single (urshifu-single)
+    id should be urshifu-single-strike
+Urshifu-Rapid (urshifu-rapid)
+    id should be urshifu-rapid-strike
