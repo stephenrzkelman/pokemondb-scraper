@@ -18,7 +18,7 @@ def get_pokemon_links():
 
 
 def get_variant_name(pokemon_name, variant_name):
-    if(variant_name == pokemon_name):
+    if(pokemon_name.startswith(variant_name)):
         return pokemon_name
     else:
         variant_suffix = variant_name.split(" ")[0]
