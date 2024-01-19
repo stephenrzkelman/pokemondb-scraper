@@ -17,14 +17,13 @@ def get_pokemon_links():
     return list(set(pokemon_links))
 
 
-def get_variant_name_id(pokemon_name, variant_name, pokemon_id):
+def get_variant_name(pokemon_name, variant_name):
     if(variant_name == pokemon_name):
-        return pokemon_name, pokemon_id
+        return pokemon_name
     else:
         variant_suffix = variant_name.split(" ")[0]
         pokemon_variant_name = pokemon_name + "-" + variant_suffix
-        pokemon_variant_id = pokemon_id + "-" + variant_suffix.lower()
-        return pokemon_variant_name, pokemon_variant_id
+        return pokemon_variant_name
 
 
 def get_pokemon_variants(pokemon_webpage):
@@ -43,6 +42,22 @@ def get_pokemon_variants(pokemon_webpage):
     ))
     # return list of variant names
     return variants
+
+
+def get_pokemon_variant_ids(pokemon_webpage, variants, pokemondb_name):
+    images = pokemon_webpage.find_all(
+        "img"
+    )
+    def is_pokemon_image(img):
+        return img['src'].startswith("https://img.pokemondb.net/sprites/") or img['src'].startswith("https://img.pokemondb.net/artwork/")
+    pokemon_images = list(filter( is_pokemon_image, images ))
+    variant_images = pokemon_images[:len(variants)]
+    variant_ids = list(map(
+        lambda variant_img: variant_img['src'].split("/")[-1][:-4],
+        variant_images
+    ))
+    return variant_ids
+
 
 
 def get_pokemon_types(pokemon_webpage):
@@ -100,26 +115,30 @@ def get_pokemon_info(pokemon_links):
     for URL in pokemon_links:
         # save index name for other web scraping
         pokemondb_name = URL.split("/")[-1]
+        print(pokemondb_name)
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
         # Get Name
         name = soup.find_all("h1")[0].text
         # Get Variants
         variants = get_pokemon_variants(soup)
+        # Get Variant (image) ID's
+        variant_ids = get_pokemon_variant_ids(soup, variants, pokemondb_name)
         # Get Types
         types = get_pokemon_types(soup)
         # Get Base Stats
         stats = get_pokemon_base_stats(soup)
         # Combine Info
         for i in range(len(variants)):
-            variant_name, variant_id = get_variant_name_id(name, variants[i], pokemondb_name)
+            variant_name = get_variant_name(name, variants[i])
             pokemon_data[variant_name] = {
-                "ID": variant_id,
+                "ID": variant_ids[i],
                 "type": types[i],
                 "stats": stats[i],
             }
         count += 1
-        print(count)
+        print(f"{count}/1025")
+        
     return pokemon_data
 
 def output_to_file(pokemon_data, filename):
