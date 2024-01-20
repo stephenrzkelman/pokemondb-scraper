@@ -17,13 +17,14 @@ def get_pokemon_links():
     return list(set(pokemon_links))
 
 
-def get_variant_name(pokemon_name, variant_name):
-    if(pokemon_name.startswith(variant_name)):
-        return pokemon_name
-    else:
-        variant_suffix = variant_name.split(" ")[0]
-        pokemon_variant_name = pokemon_name + "-" + variant_suffix
-        return pokemon_variant_name
+def get_variant_name(variant_id):
+    variant_id_components = variant_id.split("-")
+    capitalized_variant_id_components = list(map(
+        lambda word: word.capitalize(),
+        variant_id_components
+    ))
+    variant_name = "-".join(capitalized_variant_id_components)
+    return variant_name
 
 
 def get_pokemon_variants(pokemon_webpage):
@@ -44,7 +45,7 @@ def get_pokemon_variants(pokemon_webpage):
     return variants
 
 
-def get_pokemon_variant_ids(pokemon_webpage, variants, pokemondb_name):
+def get_pokemon_variant_ids(pokemon_webpage, variants):
     images = pokemon_webpage.find_all(
         "img"
     )
@@ -123,18 +124,18 @@ def get_pokemon_info(pokemon_links):
         # Get Variants
         variants = get_pokemon_variants(soup)
         # Get Variant (image) ID's
-        variant_ids = get_pokemon_variant_ids(soup, variants, pokemondb_name)
+        variant_ids = get_pokemon_variant_ids(soup, variants)
         # Get Types
         types = get_pokemon_types(soup)
         # Get Base Stats
         stats = get_pokemon_base_stats(soup)
         # Combine Info
         for i in range(len(variants)):
-            variant_name = get_variant_name(name, variants[i])
+            variant_name = get_variant_name(variant_ids[i])
             pokemon_data[variant_name] = {
                 "ID": variant_ids[i],
-                "type": types[i],
-                "stats": stats[i],
+                "Type": types[i],
+                "Base Stats": stats[i],
             }
         count += 1
         print(f"{count}/1025")
