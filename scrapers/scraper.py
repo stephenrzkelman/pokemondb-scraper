@@ -8,11 +8,9 @@ def get_pokemon_links():
     page = requests.get(URL)
 
     soup = BeautifulSoup(page.content, "html.parser")
-    # print(soup)
 
     pokemon_links = re.findall("<a class=\"ent-name\" href=\"\/pokedex\/[^\"]*\"", str(soup))
     pokemon_links = list(map(lambda href_link : "https://pokemondb.net"+href_link[26:-1], pokemon_links))
-    # print(pokemon_links)
 
     return list(set(pokemon_links))
 
