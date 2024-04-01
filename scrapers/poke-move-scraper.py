@@ -18,9 +18,9 @@ def scrape_moves(pokemon_page):
         move_chunks
     ))
     distinct_moves = list(set(moves))
-    return moves
+    return distinct_moves
 
 
-page = requests.get("https://pokemondb.net/pokedex/gothita")
+page = requests.get("https://pokemondb.net/pokedex/darmanitan")
 soup = BeautifulSoup(page.content, "html.parser")
 print(scrape_moves(soup))
